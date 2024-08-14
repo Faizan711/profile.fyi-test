@@ -19,16 +19,6 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch<AppDispatch>();
 
-  // useEffect(() => {
-  //   fetch("https://fakestoreapi.com/products?limit=10")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setProducts(data);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((error) => console.error("Error fetching products:", error));
-  // }, []);
-
   useEffect(() => {
     setProducts(productsData);
     setIsLoading(false);
