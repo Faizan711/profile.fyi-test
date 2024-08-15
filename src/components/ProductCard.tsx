@@ -23,7 +23,7 @@ function ProductCard({ imageLink, title, price, onClick }: ProductCardProps) {
       <Toaster />
       <Link
         href="#"
-        className="group relative block overflow-hidden rounded-2xl shadow-xl bg-transparent h-[400px"
+        className="group relative block overflow-hidden rounded-xl shadow-xl bg-transparent"
       >
         <Image
           src={imageLink}
@@ -39,7 +39,7 @@ function ProductCard({ imageLink, title, price, onClick }: ProductCardProps) {
             New{" "}
           </span>
 
-          <h3 className="mt-4 text-lg font-medium text-gray-900">{title}</h3>
+          <h3 className="mt-4 text-sm font-medium text-gray-900">{title}</h3>
           <div className="mt-2.5 mb-5 flex items-center">
             <span className="mr-2 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
               5.0
