@@ -30,13 +30,20 @@ export default function Home() {
     dispatch(addToCart(productId));
   };
 
+  const handleLogout = () => {
+    signOut();
+  };
+
   return (
     <div className="px-4 md:px-12 py-6 bg-gray-100">
       <div className="mb-6 px-4 py-1 bg-white rounded-xl flex justify-between items-center">
         <h1 className="text-md md:text-xl font-bold">Products Page</h1>
         <div className="flex gap-4 items-center justify-between">
           <CartIcon />
-          <LogOutIcon className="cursor-pointer" onClick={() => signOut()} />
+          <LogOutIcon
+            className="cursor-pointer"
+            onClick={() => handleLogout()}
+          />
         </div>
       </div>
       <div>
