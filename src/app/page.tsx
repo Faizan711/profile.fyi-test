@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/lib/store";
 import { addToCart } from "@/lib/slices/cartSlice";
 import productsData from "../data/products.json";
+import { LogOutIcon } from "lucide-react";
+import { signOut } from "next-auth/react";
 
 interface Product {
   id: number;
@@ -30,9 +32,12 @@ export default function Home() {
 
   return (
     <div className="px-4 md:px-12 py-6 bg-gray-100">
-      <div className="mb-6 p-4 bg-white rounded-xl flex justify-between items-center">
-        <h1 className="text-xl md:text-2xl font-bold">Products Page</h1>
-        <CartIcon />
+      <div className="mb-6 px-4 py-1 bg-white rounded-xl flex justify-between items-center">
+        <h1 className="text-md md:text-xl font-bold">Products Page</h1>
+        <div className="flex gap-4 items-center justify-between">
+          <CartIcon />
+          <LogOutIcon className="cursor-pointer" onClick={() => signOut()} />
+        </div>
       </div>
       <div>
         {isLoading === true ? (
