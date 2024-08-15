@@ -11,12 +11,12 @@ export const authOptions = {
       type: "credentials",
       credentials: {
         email: {
-          label: "Email",
+          label: "Email (admin@gmail.com)",
           type: "email",
           placeholder: "Enter your email",
         },
         password: {
-          label: "Password",
+          label: "Password (admin@123)",
           type: "password",
           placeholder: "Enter your password",
         },
