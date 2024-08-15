@@ -27,16 +27,16 @@ function ProductCard({ imageLink, title, price, onClick }: ProductCardProps) {
           alt="product Image"
           width={400}
           height={400}
-          className="h-64 w-full object-fit transition duration-500 group-hover:scale-105 sm:h-72"
+          className="h-52 w-full object-fit transition duration-500 group-hover:scale-105 sm:h-56"
         />
 
-        <div className="relative border  bg-white p-6">
+        <div className="relative border bg-white p-6">
           <span className="whitespace-nowrap bg-yellow-400 px-3 py-1.5 text-xs font-medium">
             {" "}
             New{" "}
           </span>
 
-          <h3 className="mt-4 text-sm font-medium text-gray-900">{title}</h3>
+          <h3 className="mt-2 text-sm font-medium text-gray-900">{title}</h3>
           <div className="mt-2.5 mb-5 flex items-center">
             <span className="mr-2 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
               5.0
