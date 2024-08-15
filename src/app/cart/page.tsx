@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/lib/store";
 import toast, { Toaster } from "react-hot-toast";
-import { applyDiscount } from "../../lib/slices/cartSlice";
+import { applyDiscount, clearCart } from "../../lib/slices/cartSlice";
 import { useState } from "react";
 import CartItem from "@/components/CartItem";
 import Link from "next/link";
@@ -33,6 +33,10 @@ export default function Cart() {
     return total.toFixed(2);
   };
 
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
+
   return (
     <div className="px-4 md:px-12 py-6 bg-gray-100 h-screen">
       <Link
@@ -56,8 +60,18 @@ export default function Cart() {
             </div>
           ) : (
             <>
-              <h1 className="text-2xl border-b font-medium">CART ITEMS</h1>
-              <div className="grid grid-cols-1 gap-6 mb-6 max-h-[400px] overflow-y-auto shadow-xl ">
+              <div className="flex items-center justify-center mb-6 gap-x-6">
+                <h1 className="text-xl font-medium">
+                  CART ITEMS <span>({cartItems.length})</span>
+                </h1>
+                <button
+                  className="text-red-500 font-sm py-2 px-1 border border-red-500 rounded-xl hover:bg-red-500 hover:text-white"
+                  onClick={handleClearCart}
+                >
+                  Clear Cart
+                </button>
+              </div>
+              <div className="grid grid-cols-1 gap-6 mb-6 max-h-[400px] overflow-y-auto shadow-xl rounded-xl">
                 {cartItems.map((item) => (
                   <CartItem
                     key={item.product.id}
