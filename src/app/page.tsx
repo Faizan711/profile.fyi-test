@@ -18,7 +18,7 @@ interface Product {
   image: string;
 }
 
-const MAX_QUANTITY = 10;
+const MAX_QUANTITY = 10; //Quantity limit of any product
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -52,18 +52,23 @@ export default function Home() {
   return (
     <div className="px-4 md:px-12 py-6 bg-gray-100">
       <Toaster />
+      {/* Navbar */}
       <div className="mb-6 px-4 py-1 bg-white rounded-xl flex justify-between items-center">
         <h1 className="text-md md:text-xl font-bold">Products Page</h1>
         <div className="flex gap-4 items-center justify-between">
           <CartIcon />
-          <LogOutIcon
-            className="cursor-pointer"
+          <button
             onClick={() => handleLogout()}
-          />
+            className="flex items-center gap-x-2"
+          >
+            Logout
+            <LogOutIcon className="cursor-pointer" />
+          </button>
         </div>
       </div>
       <div>
         {isLoading === true ? (
+          //loading spinner
           <div className="h-screen w-full flex justify-center items-center">
             <svg
               aria-hidden="true"
@@ -83,7 +88,8 @@ export default function Home() {
             </svg>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Display products in a grid */}
             {products.map((product) => (
               <ProductCard
                 key={product.id}

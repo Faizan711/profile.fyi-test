@@ -39,6 +39,7 @@ export default function Cart() {
 
   return (
     <div className="px-4 md:px-12 py-6 bg-gray-100 h-screen">
+      <Toaster />
       <Link
         href={"/"}
         className="mb-6 py-2 px-4 bg-white rounded-xl border-2 border-yellow-500"
@@ -48,8 +49,8 @@ export default function Cart() {
       <h1 className="text-xl md:text-2xl font-bold mb-6 mt-6 text-yellow-500">
         Cart Page
       </h1>
-      <div className="flex flex-col-reverse md:flex-row md:justify-around gap-y-8">
-        <Toaster />
+      {/* Cart Items */}
+      <div className="flex flex-col-reverse gap-x-6 md:flex-row md:justify-around gap-y-8">
         <div>
           {cartItems.length === 0 ? (
             <div className="text-center">
@@ -86,6 +87,7 @@ export default function Cart() {
             </>
           )}
         </div>
+        {/* Cart Summary and Checkout */}
         <div>
           <div className="mb-6 p-4 bg-white rounded-xl shadow-xl">
             <h2 className="text-2xl border-b font-medium">Cart Summary</h2>
