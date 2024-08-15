@@ -14,6 +14,8 @@ interface CartItemProps {
   quantity: number;
 }
 
+const MAX_QUANTITY = 10; // Same as in the slice
+
 const CartItem: React.FC<CartItemProps> = ({
   id,
   title,
@@ -29,7 +31,13 @@ const CartItem: React.FC<CartItemProps> = ({
   };
 
   const handleQuantityChange = (quantity: number) => {
-    dispatch(updateQuantity({ id, quantity }));
+    if (quantity < 1) {
+      toast.error("Quantity must be greater than 0");
+    } else if (quantity > MAX_QUANTITY) {
+      toast.error("Quantity must not exceed " + MAX_QUANTITY);
+    } else {
+      dispatch(updateQuantity({ id, quantity }));
+    }
   };
 
   return (

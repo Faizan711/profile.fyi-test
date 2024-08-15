@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import React from "react";
 
 interface ProductCardProps {
   imageLink: string;
@@ -14,13 +13,11 @@ interface ProductCardProps {
 
 function ProductCard({ imageLink, title, price, onClick }: ProductCardProps) {
   const handleAddToCart = () => {
-    toast.success("Product Added to cart");
     onClick();
   };
 
   return (
     <div>
-      <Toaster />
       <Link
         href="#"
         className="group relative block overflow-hidden rounded-xl shadow-xl bg-transparent"

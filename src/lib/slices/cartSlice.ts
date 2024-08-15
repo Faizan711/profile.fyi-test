@@ -22,6 +22,8 @@ const initialState: CartState = {
   discount: 0,
 };
 
+const MAX_QUANTITY = 10; //max quantity of a product user can buy
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -33,7 +35,11 @@ const cartSlice = createSlice({
           (item) => item.product.id === product.id
         );
         if (existingItem) {
-          existingItem.quantity += 1;
+          if (existingItem.quantity < MAX_QUANTITY) {
+            existingItem.quantity += 1;
+          } else {
+            return;
+          }
         } else {
           state.items.push({ product, quantity: 1 });
         }
@@ -51,7 +57,9 @@ const cartSlice = createSlice({
       const { id, quantity } = action.payload;
       const existingItem = state.items.find((item) => item.product.id === id);
       if (existingItem) {
-        existingItem.quantity = quantity;
+        if (quantity > 0 && quantity <= MAX_QUANTITY) {
+          existingItem.quantity = quantity;
+        }
         if (existingItem.quantity <= 0) {
           state.items = state.items.filter((item) => item.product.id !== id);
         }
